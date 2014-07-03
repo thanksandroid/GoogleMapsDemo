@@ -10,5 +10,7 @@
     <string name="maps_example">Maps Example</string>
     <string name="direcions_example">Direcions Example</string>
     <string name="polyline_example">Polyline Example</string>
+    <string name="title_activity_markers">Markers Demo</string>
+    <string name="markers_example">Markers Example</string>
 
 </resources>

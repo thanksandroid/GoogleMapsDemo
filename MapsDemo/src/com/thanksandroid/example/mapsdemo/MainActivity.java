@@ -20,6 +20,12 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	// Markers Example
+	public void markersExample(View view) {
+		Intent intent = new Intent(this, MarkersActivity.class);
+		startActivity(intent);
+	}
+
 	// Directions Example
 	public void directionsExample(View view) {
 		Intent intent = new Intent(this, DirectionsActivity.class);

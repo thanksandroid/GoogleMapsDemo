@@ -3,7 +3,6 @@ package com.thanksandroid.example.mapsdemo;
 import java.util.ArrayList;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -32,8 +31,8 @@ public class DirectionsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_directions);
+		
 		// check if GooglePlayServivces is available
-
 		int result = GooglePlayServicesUtil
 				.isGooglePlayServicesAvailable(getBaseContext());
 		if (result == ConnectionResult.SUCCESS) {
@@ -103,6 +102,14 @@ public class DirectionsActivity extends BaseActivity {
 	}
 
 	private void drawDirections(Place source, Place destination) {
+
+		// Remove previous polylines if any
+		for (int i = 0; i < polylines.size(); i++) {
+			polylines.get(i).remove();
+		}
+		// clear the polylines list
+		polylines.clear();
+
 		String url = MapHelper.makeURL(source.getLatitude(),
 				source.getLongitude(), destination.getLatitude(),
 				destination.getLongitude());
@@ -131,7 +138,7 @@ public class DirectionsActivity extends BaseActivity {
 			super.onPostExecute(result);
 			hideProgRessDialog();
 			if (result != null) {
-				MapHelper.drawPath(result, map);
+				MapHelper.drawPath(result, map, polylines);
 			} else {
 				showToast("Error while fetching path.");
 			}

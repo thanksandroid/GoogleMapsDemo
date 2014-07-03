@@ -15,6 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:onClick="markersExample"
+        android:text="@string/markers_example" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:onClick="polylineExample"
         android:text="@string/polyline_example" />
 

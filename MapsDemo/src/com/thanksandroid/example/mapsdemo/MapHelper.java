@@ -80,7 +80,7 @@ public class MapHelper {
 
 	}
 
-	public static void drawPath(String result, GoogleMap map) {
+	public static void drawPath(String result, GoogleMap map, ArrayList<Polyline> polylines) {
 
 		try {
 			// Tranform the string into a json object
@@ -92,13 +92,15 @@ public class MapHelper {
 			String encodedString = overviewPolylines.getString("points");
 			List<LatLng> list = decodePoly(encodedString);
 
+			Polyline line;
 			for (int z = 0; z < list.size() - 1; z++) {
 				LatLng src = list.get(z);
 				LatLng dest = list.get(z + 1);
-				Polyline line = map.addPolyline(new PolylineOptions()
+				line = map.addPolyline(new PolylineOptions()
 						.add(new LatLng(src.latitude, src.longitude),
 								new LatLng(dest.latitude, dest.longitude))
 						.width(4).color(Color.RED).geodesic(true));
+				polylines.add(line);
 			}
 
 		} catch (JSONException e) {
